@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Main Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Remix Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Islamic Website</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">الموعظة</a>
+        <ul>
+          <li><a href="#main" class="active">الصفحة الرئيسية</a></li>
+          <li><a href="#hadith">احاديث</a></li>
+          <li><a href="#lectures">محاضرات</a></li>
+          <li><a href="#quran">القرآن الكريم</a></li>
+          <li><a href="#adhan">مواقيت الصلاه</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        <div class="menu">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="main" id="main">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="text">
+            <h1>
+              مرحبا بكم في <br />
+              موقع الموعظة الاسلامي
+            </h1>
+            <a href="#hadith"><button>ابدأ التصفح <i class="ri-arrow-left-line"></i></button></a>
+          </div>
+        </div>
+      </section>
+      <section class="hadith" id="hadith">
+        <h2>بعض الاحاديث من صحيح مسلم</h2>
+        <div class="container">
+          <div class="hadith-container">
+            <span class="number"><span class="current"></span>/300</span>
+            <p></p>
+          </div>
+          <div class="btns">
+            <button class="next">التالي</button>
+            <button class="prev">السابق</button>
+          </div>
+        </div>
+      </section>
+      <section class="lectures" id="lectures">
+        <h2>اهم المحاضرات الدينية</h2>
+        <div class="container">
+          <div class="left">
+            <iframe src="https://www.youtube.com/embed/CM2Rum9DYEQ" frameborder="0"></iframe>
+          </div>
+          <div class="right">
+            <div class="box" data-source="https://www.youtube.com/embed/CM2Rum9DYEQ">
+              <div class="text">
+                <h3>لو عايز تنجح في حياتك طبق هذه الطريقة </h3>
+                <p>الشيخ أمجد سمير</p>
+              </div>
+              <div class="img">
+                <img src="imgs/profile.jpg" alt="img" loading="lazy">
+              </div>
+            </div>
+            <div class="box" data-source="https://www.youtube.com/embed/LxXcznxw8TQ">
+              <div class="text">
+                <h3>علاج التوتر و القلق و ماذا تحتاج لتستقر حياتك و نفسيتك</h3>
+                <p>الشيخ أمجد سمير</p>
+              </div>
+              <div class="img">
+                <img src="imgs/profile.jpg" alt="img" loading="lazy">
+              </div>
+            </div>
+            <div class="box" data-source="https://www.youtube.com/embed/_Rhfup6NSY0">
+              <div class="text">
+                <h3>سر الخشوع في الصلاة ! تعلم كيف تخشع في صلاتك عشان حياتك تنضبط</h3>
+                <p>الشيخ أمجد سمير</p>
+              </div>
+              <div class="img">
+                <img src="imgs/profile.jpg" alt="img" loading="lazy">
+              </div>
+            </div>
+            <div class="box" data-source="https://www.youtube.com/embed/ZE_jsvJjwys">
+              <div class="text">
+                <h3>مشروع حياتك اللي تكسب به الدنيا والآخرة</h3>
+                <p>الشيخ أمجد سمير</p>
+              </div>
+              <div class="img">
+                <img src="imgs/profile.jpg" alt="img" loading="lazy">
+              </div>
+            </div>
+            <div class="box" data-source="https://www.youtube.com/embed/rMsup96W9WE">
+              <div class="text">
+                <h3>لا تكن فارغاً ولا تضيع وقت في التفاهات</h3>
+                <p>الشيخ أمجد سمير</p>
+              </div>
+              <div class="img">
+                <img src="imgs/profile.jpg" alt="img" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="quran" id="quran">
+        <h2>القرآن الكريم</h2>
+        <div class="container"></div>
+        <audio id="audioPlayer" controls style="margin-top:20px; width:100%;"></audio>
+      </section>
+      <section class="adhan" id="adhan">
+        <h2>مواقيت الصلاه بتوقيت القاهرة</h2>
+        <div class="container">
+          <div class="card">
+            <h3>الفجر</h3>
+            <p class="time Fajr"></p>
+          </div>
+          <div class="card">
+            <h3>الشروق</h3>
+            <p class="time Sunrise"></p>
+          </div>
+          <div class="card">
+            <h3>الظهر</h3>
+            <p class="time Dhuhr"></p>
+          </div>
+          <div class="card">
+            <h3>العصر</h3>
+            <p class="time Asr"></p>
+          </div>
+          <div class="card">
+            <h3>المغرب</h3>
+            <p class="time Maghrib"></p>
+          </div>
+          <div class="card">
+            <h3>العشاء</h3>
+            <p class="time Isha"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="contact">
+      <div class="container">
+        <h3>الموعظة</h3>
+        <ul class="links">
+          <li><i class="ri-facebook-line"></i></li>
+          <li><i class="ri-instagram-line"></i></li>
+          <li><i class="ri-twitter-line"></i></li>
+          <li><i class="ri-whatsapp-line"></i></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,520 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Amiri", serif;
+    scroll-behavior: smooth;
+}
+:root {
+    --bg-color:#fff;
+    --color:#000;
+}
+.container {
+    width: 80vw;
+    margin: auto;
+}
+body {
+    direction: rtl;
+}
+h2 {
+    position: relative;
+    font-size: 40px;
+    width: fit-content;
+    margin: auto;
+    color: #43a047;
+}
+h2::after,
+h2::before {
+    position: absolute;
+    content: '';
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: #43a047;
+}
+h2::after {
+    bottom: -5px;
+    width: 100%;
+}
+h2::before {
+    bottom: -10px;
+    width: 70%;
+}
+@media (max-width:768px) {
+    h2 {
+        font-size: 30px;
+    }
+}
+/* header section */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: .3s;
+    z-index: 10000;
+}
+header.active {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .container .logo {
+    text-decoration: none;
+    color: var(--bg-color);
+    font-size: 40px;
+}
+header .container ul {
+    display: flex;
+    gap: 20px;
+    list-style:none;
+}
+header .container ul a {
+    position: relative;
+    text-decoration: none;
+    color: var(--bg-color);
+    font-size: 17px;
+}
+header .container ul a::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--bg-color);
+    transition: .3s all ease-in-out;
+}
+header .container ul a.active::after {
+    width: 100%;
+}
+header .container ul a:hover::after {
+    width: 100%;
+}
+header .container .menu {
+    font-size: 30px;
+    display: none;
+    color: var(--bg-color);
+    cursor: pointer;
+}
+@media (max-width:768px){
+    header .container ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        background-color: var(--bg-color);
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+    header .container ul.active {
+        top: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+    header .container ul {
+        width: 100%;
+    }
+    header .container ul a {
+        display: inline-block;
+        width: 100%;
+        padding: 5px 0;
+        color: var(--color);
+    }
+    header .container ul a:first-of-type,
+    header .container ul a:last-of-type {
+      margin: 5px 0;
+    }
+    header .container ul a::after {
+        background-color: var(--color);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    header .container ul a.active::after {
+        width: 5%;
+    }
+    header .container ul a:hover::after {
+        width: 5%;
+    }
+    header .container .menu {
+        display: block;
+    }
+}
+/* main section */
+.main {
+    position: relative;
+    height: 100vh;
+    background: url(imgs/bg.jpg) center center/cover no-repeat;
+    z-index: 1;
+}
+.main .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+.main .container {
+    position: relative;
+    height: calc(100%);
+    padding-top: 70px;
+}
+.main .container .text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.main .container .text h1 {
+    font-size: 60px;
+    color: var(--bg-color);
+    margin-bottom: 20px;
+}
+.main .container .text button {
+    position: relative;
+    border: 2px solid var(--bg-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--bg-color);
+    font-weight: bold;
+    transition: .4s;
+    z-index: 1;
+}
+.main .container .text button::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--bg-color);
+    transition: .4s;
+    z-index: -1;
+}
+.main .container .text button:hover {
+    color: var(--color);
+}
+.main .container .text button:hover::after {
+    width: 100%;
+}
+@media (max-width:768px) {
+    .main .container .text h1 {
+        font-size: 50px;
+    }
+    .main .container .text button {
+        font-size: 16px;
+    }
+}
+/* hadith section */
+.hadith {
+  padding: 70px 0;
+  background: #f9f9f9;
+}
+.hadith-container {
+  position: relative;
+  margin: 50px auto 30px;
+  height: 300px;
+  max-width: 800px;
+  overflow: auto;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+              0 6px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hadith-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hadith-container .number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #43a047;
+}
+
+.hadith-container p {
+  font-size: 20px;
+  line-height: 1.8;
+  text-align: center;
+  color: #333;
+  margin: 40px 0;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+.btns button {
+  background-color: #43a047;
+  padding: 12px 30px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 17px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btns button:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hadith-container {
+    padding: 30px 20px;
+    min-height: auto;
+  }
+
+  .hadith-container p {
+    font-size: 18px;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btns button {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+/* lectures Section */
+.lectures {
+  padding: 70px 0;
+}
+
+/* Layout */
+.lectures .container {
+  margin-top: 50px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.lectures .left {
+  flex: 1 1 60%;
+  min-width: 300px;
+}
+
+.lectures .left iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Right Side */
+.lectures .right {
+  flex: 1 1 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lectures .box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.lectures .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.lectures .box .text h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: #222;
+}
+
+.lectures .box .text p {
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+  color: #777;
+}
+
+.lectures .box .img img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #43a047;
+}
+
+@media (max-width: 992px) {
+  .lectures .container {
+    flex-direction: column;
+  }
+  
+  .lectures .left iframe {
+    height: 300px;
+  }
+}
+/* quran section */
+.quran {
+  padding: 70px 0;
+}
+
+.quran .container {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.quran .container .surah {
+  background: #fff;
+  padding: 25px 15px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quran .container .surah.active {
+  border: 2px solid #009688;
+  background: #e0f7f5;
+  box-shadow: 0 6px 14px rgba(0, 150, 136, 0.3);
+}
+
+.quran .container .surah:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.20);
+}
+
+.quran .container .surah h3 {
+  font-size: 1.3rem;
+  color: #388e3c;
+  margin-bottom: 8px;
+}
+
+.quran .container .surah p {
+  font-size: 1rem;
+  color: #555;
+}
+
+#audioPlayer {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  display: block;
+  border: 2px solid #009688;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* adhan section */
+.adhan {
+  padding: 70px 0;
+}
+.adhan .container {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.adhan .container .card {
+  background: linear-gradient(135deg, #fff, #f9f9f9);
+  border: 2px solid #16a085;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.adhan .container .card::before {
+  content: "✦";
+  font-size: 40px;
+  color: rgba(22, 160, 133, 0.1);
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.adhan .container .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.adhan .container .card h3 {
+  font-size: 20px;
+  color: var(--color);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.adhan .container .card p {
+  font-size: 35px;
+  font-weight: bold;
+  color: #d4af37;
+}
+
+footer {
+  background-color: #43a047;
+  color: var(--bg-color);
+  padding: 10px;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .container h3 {
+  font-size: 25px;
+}
+footer .container ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+footer .container ul i {
+  font-size: 25px;
+  cursor: pointer;
+}
+footer .container ul li {
+  transition: .3s;
+}
+footer .container ul li:hover {
+  transform: translateY(-4px);
+}
