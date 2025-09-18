@@ -1,3 +1,19 @@
+// scroll-up button 
+let scroll = document.querySelector('.scroll-up')
+window.addEventListener('scroll',()=> {
+  if(window.scrollY > 100) {
+    scroll.classList.add('active')
+  }else {
+    scroll.classList.remove('active')
+  }
+})
+scroll.addEventListener('click',()=> {
+  window.scrollTo({
+    top:0,
+    left:0,
+    behavior:"smooth"
+  })
+})
 // change header bg on scrolling
 let header = document.querySelector("header");
 window.addEventListener("scroll", () => {
@@ -93,7 +109,7 @@ let quranContainer = document.querySelector(".quran .container");
 let audioPlayer = document.getElementById("audioPlayer");
 
 async function getSurahs() {
-  let response = await fetch("http://api.alquran.cloud/v1/meta");
+  let response = await fetch("https://api.alquran.cloud/v1/meta");
   let data = await response.json();
   let surahs = data.data.surahs.references;
 
