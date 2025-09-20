@@ -14,6 +14,26 @@ scroll.addEventListener('click',()=> {
     behavior:"smooth"
   })
 })
+// change theme
+let toggleIcon = document.querySelector('.toggle i');
+
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+  toggleIcon.classList.replace('ri-moon-fill', 'ri-sun-fill');
+}
+
+toggleIcon.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+
+  if (document.body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+    toggleIcon.classList.replace('ri-moon-fill', 'ri-sun-fill');
+  } else {
+    localStorage.setItem('theme', 'light');
+    toggleIcon.classList.replace('ri-sun-fill', 'ri-moon-fill');
+  }
+});
+
 // change header bg on scrolling
 let header = document.querySelector("header");
 window.addEventListener("scroll", () => {
