@@ -1,36 +1,36 @@
-// scroll-up button 
-let scroll = document.querySelector('.scroll-up')
-window.addEventListener('scroll',()=> {
-  if(window.scrollY > 100) {
-    scroll.classList.add('active')
-  }else {
-    scroll.classList.remove('active')
+// scroll-up button
+let scroll = document.querySelector(".scroll-up");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    scroll.classList.add("active");
+  } else {
+    scroll.classList.remove("active");
   }
-})
-scroll.addEventListener('click',()=> {
+});
+scroll.addEventListener("click", () => {
   window.scrollTo({
-    top:0,
-    left:0,
-    behavior:"smooth"
-  })
-})
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
 // change theme
-let toggleIcon = document.querySelector('.toggle i');
+let toggleIcon = document.querySelector(".toggle i");
 
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark');
-  toggleIcon.classList.replace('ri-moon-fill', 'ri-sun-fill');
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  toggleIcon.classList.replace("ri-moon-fill", "ri-sun-fill");
 }
 
-toggleIcon.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
+toggleIcon.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 
-  if (document.body.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-    toggleIcon.classList.replace('ri-moon-fill', 'ri-sun-fill');
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+    toggleIcon.classList.replace("ri-moon-fill", "ri-sun-fill");
   } else {
-    localStorage.setItem('theme', 'light');
-    toggleIcon.classList.replace('ri-sun-fill', 'ri-moon-fill');
+    localStorage.setItem("theme", "light");
+    toggleIcon.classList.replace("ri-sun-fill", "ri-moon-fill");
   }
 });
 
@@ -54,7 +54,7 @@ menuIcon.addEventListener("click", () => {
   ul.classList.toggle("active");
 });
 
-links.forEach(link => {
+links.forEach((link) => {
   link.addEventListener("click", () => {
     ul.classList.remove("active");
     menuIcon.classList.add("ri-menu-line");
@@ -68,7 +68,6 @@ links.forEach((link) => {
     e.target.classList.add("active");
   });
 });
-// active class on clicked link
 
 // fetching hadiths
 let hadithText = document.querySelector(".hadith-container p");
@@ -115,6 +114,7 @@ prevBtn.addEventListener("click", () => {
 });
 
 loadAhadith();
+
 // change the lecture source
 let lecBoxs = document.querySelectorAll(".lectures .box");
 let video = document.querySelector(".lectures .left iframe");
@@ -127,6 +127,123 @@ lecBoxs.forEach((box) => {
 // fetching the quran
 let quranContainer = document.querySelector(".quran .container");
 let audioPlayer = document.getElementById("audioPlayer");
+let overlay = document.getElementById("overlay");
+let surahNames = [
+  "الفاتحة",
+  "البقرة",
+  "آل عمران",
+  "النساء",
+  "المائدة",
+  "الأنعام",
+  "الأعراف",
+  "الأنفال",
+  "التوبة",
+  "يونس",
+  "هود",
+  "يوسف",
+  "الرعد",
+  "ابراهيم",
+  "الحجر",
+  "النحل",
+  "الإسراء",
+  "الكهف",
+  "مريم",
+  "طه",
+  "الأنبياء",
+  "الحج",
+  "المؤمنون",
+  "النور",
+  "الفرقان",
+  "الشعراء",
+  "النمل",
+  "القصص",
+  "العنكبوت",
+  "الروم",
+  "لقمان",
+  "السجدة",
+  "الأحزاب",
+  "سبإ",
+  "فاطر",
+  "يس",
+  "الصافات",
+  "ص",
+  "الزمر",
+  "غافر",
+  "فصلت",
+  "الشورى",
+  "الزخرف",
+  "الدخان",
+  "الجاثية",
+  "الأحقاف",
+  "محمد",
+  "الفتح",
+  "الحجرات",
+  "ق",
+  "الذاريات",
+  "الطور",
+  "النجم",
+  "القمر",
+  "الرحمن",
+  "الواقعة",
+  "الحديد",
+  "المجادلة",
+  "الحشر",
+  "الممتحنة",
+  "الصف",
+  "الجمعة",
+  "المنافقون",
+  "التغابن",
+  "الطلاق",
+  "التحريم",
+  "الملك",
+  "القلم",
+  "الحاقة",
+  "المعارج",
+  "نوح",
+  "الجن",
+  "المزمل",
+  "المدثر",
+  "القيامة",
+  "الانسان",
+  "المرسلات",
+  "النبإ",
+  "النازعات",
+  "عبس",
+  "التكوير",
+  "الانفطار",
+  "المطففين",
+  "الانشقاق",
+  "البروج",
+  "الطارق",
+  "الأعلى",
+  "الغاشية",
+  "الفجر",
+  "البلد",
+  "الشمس",
+  "الليل",
+  "الضحى",
+  "الشرح",
+  "التين",
+  "العلق",
+  "القدر",
+  "البينة",
+  "الزلزلة",
+  "العاديات",
+  "القارعة",
+  "التكاثر",
+  "العصر",
+  "الهمزة",
+  "الفيل",
+  "قريش",
+  "الماعون",
+  "الكوثر",
+  "الكافرون",
+  "النصر",
+  "المسد",
+  "الإخلاص",
+  "الفلق",
+  "الناس",
+];
 
 async function getSurahs() {
   let response = await fetch("https://api.alquran.cloud/v1/meta");
@@ -145,15 +262,45 @@ async function getSurahs() {
   quranContainer.innerHTML = output;
 
   let surahCards = document.querySelectorAll(".surah");
+
   surahCards.forEach((card) => {
     card.addEventListener("click", () => {
       let surahNumber = card.dataset.surah;
       let audioSrc = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${surahNumber}.mp3`;
+      overlay.style.display = "flex";
       audioPlayer.src = audioSrc;
-      audioPlayer.play();
-      surahCards.forEach((c) => c.classList.remove("active"));
-      card.classList.add("active");
+      audioPlayer.load();
+      audioPlayer.addEventListener(
+        "canplaythrough",
+        () => {
+          overlay.style.display = "none";
+          audioPlayer.play().catch(() => {});
+        },
+        { once: true }
+      );
+      surahCards.forEach((card) => {card.classList.remove('active')});
+      card.classList.add('active')
     });
+  });
+
+  let input = document.getElementById("input");
+  input.addEventListener("input", () => {
+    let value = input.value.trim();
+
+    surahCards.forEach((card) => (card.style.display = "none"));
+
+    if (value === "") {
+      surahCards.forEach((card) => (card.style.display = ""));
+      return;
+    }
+
+    let index = surahNames.findIndex((name) => name.includes(value));
+
+    if (index !== -1) {
+      let surahNumber = index + 1;
+      let card = document.querySelector(`.surah[data-surah='${surahNumber}']`);
+      if (card) card.style.display = "";
+    }
   });
 }
 
@@ -161,27 +308,15 @@ getSurahs();
 
 // fetching the adhan
 async function getAdhan() {
-  let response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5')
-  let data = await response.json()
-  let timings = data.data.timings
-  let prayers = ['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha']
-  prayers.forEach((p)=> {
-    document.querySelector(`.${p}`).innerHTML = timings[p]
-  })
+  let response = await fetch(
+    "https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5"
+  );
+  let data = await response.json();
+  let timings = data.data.timings;
+  let prayers = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
+  prayers.forEach((p) => {
+    document.querySelector(`.${p}`).innerHTML = timings[p];
+  });
 }
 
-getAdhan()
-
-// scrolling animation
-// text container
-let textContainer = document.querySelector('.main .container .text')
-let observer1 = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('active')
-    }else {
-      entry.target.classList.remove('active')
-    }
-  })
-})
-observer1.observe(textContainer)
+getAdhan();
